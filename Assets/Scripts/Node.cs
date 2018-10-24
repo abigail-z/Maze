@@ -27,17 +27,17 @@ public class Node : MonoBehaviour
         Destroy(leftWall);
     }
 
-    public void DestroyRight()
+    public void DestroyRight ()
     {
         Destroy(rightWall);
     }
 
-    public void DestroyTop()
+    public void DestroyTop ()
     {
         Destroy(topWall);
     }
 
-    public void DestroyBottom()
+    public void DestroyBottom ()
     {
         Destroy(bottomWall);
     }
