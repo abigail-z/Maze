@@ -33,8 +33,11 @@ public class PlayerController : MonoBehaviour
         if (Cursor.lockState == CursorLockMode.Locked)
         {
             rotX += Input.GetAxis("Mouse X");
-            rotY += Input.GetAxis("Mouse Y");
+            rotX %= 360;
             transform.localRotation = Quaternion.AngleAxis(rotX, Vector3.up);
+
+            rotY += Input.GetAxis("Mouse Y");
+            rotY = Mathf.Clamp(rotY, -90, 90);
             cam.localRotation = Quaternion.AngleAxis(rotY, Vector3.left);
         }
 
@@ -43,7 +46,7 @@ public class PlayerController : MonoBehaviour
             // movement
             moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection = moveDirection * speed;
+            moveDirection *= speed;
 
             // jump
             if (Input.GetButton("Jump"))

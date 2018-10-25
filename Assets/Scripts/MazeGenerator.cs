@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
 {
-    public GameObject node;
-    public GameObject floor;
+    public GameObject player;
+    public GameObject nodePrefab;
+    public GameObject floorPrefab;
     public float nodeWidth;
-    public float floorWidth;
     public int mazeSize;
+    public float playerSpawnHeight;
 
     private Node[,] nodes;
 
     void Start ()
     {
         // create a floor to fit the maze
-        GameObject floor = Instantiate(this.floor);
+        GameObject floor = Instantiate(floorPrefab);
         floor.transform.parent = transform;
         floor.transform.position = transform.position;
         floor.transform.localScale = new Vector3(mazeSize, 1, mazeSize);
@@ -29,7 +30,7 @@ public class MazeGenerator : MonoBehaviour
         {
             for (int y = 0; y < mazeSize; y++)
             {
-                nodes[x, y] = Instantiate(node).GetComponent<Node>();
+                nodes[x, y] = Instantiate(nodePrefab).GetComponent<Node>();
                 nodes[x, y].transform.parent = transform;
                 nodes[x, y].transform.position = new Vector3(transform.position.x - offset.x + x * nodeWidth,
                     transform.position.y + 0, transform.position.z - offset.z + y * nodeWidth);
@@ -69,6 +70,9 @@ public class MazeGenerator : MonoBehaviour
 
         // make a maze!
         DFSMaze();
+
+        // place the player in the maze
+        player.transform.position = nodes[0, 0].transform.position + Vector3.up * playerSpawnHeight;
     }
 
     // http://www.algosome.com/articles/maze-generation-depth-first.html
