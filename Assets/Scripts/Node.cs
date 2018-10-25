@@ -8,13 +8,14 @@ public class Node : MonoBehaviour
     public Node Right { get; set; }
     public Node Up { get; set; }
     public Node Down { get; set; }
+    public bool Visited { get; set; }
 
     private GameObject leftWall;
     private GameObject rightWall;
     private GameObject topWall;
     private GameObject bottomWall;
 
-    void Start ()
+    void Awake ()
     {
         leftWall = transform.Find("Left Wall").gameObject;
         rightWall = transform.Find("Right Wall").gameObject;
@@ -24,21 +25,37 @@ public class Node : MonoBehaviour
 
     public void DestroyLeft ()
     {
-        Destroy(leftWall);
+        if (leftWall != null)
+        {
+            Destroy(leftWall);
+            leftWall = null;
+        }
     }
 
     public void DestroyRight ()
     {
-        Destroy(rightWall);
+        if (rightWall != null)
+        {
+            Destroy(rightWall);
+            rightWall = null;
+        }
     }
 
     public void DestroyTop ()
     {
-        Destroy(topWall);
+        if (topWall != null)
+        {
+            Destroy(topWall);
+            topWall = null;
+        }
     }
 
     public void DestroyBottom ()
     {
-        Destroy(bottomWall);
+        if (bottomWall != null)
+        {
+            Destroy(bottomWall);
+            bottomWall = null;
+        }
     }
 }
