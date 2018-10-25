@@ -5,13 +5,21 @@ using UnityEngine;
 public class MazeGenerator : MonoBehaviour
 {
     public GameObject node;
+    public GameObject floor;
     public float nodeWidth;
+    public float floorWidth;
     public int mazeSize;
 
     private Node[,] nodes;
 
     void Start ()
     {
+        // create a floor to fit the maze
+        GameObject floor = Instantiate(this.floor);
+        floor.transform.parent = transform;
+        floor.transform.position = transform.position;
+        floor.transform.localScale = new Vector3(mazeSize, 1, mazeSize);
+
         // this is to center the maze on the parent's position
         Vector3 offset = new Vector3((float)(mazeSize - 1) / 2 * nodeWidth, 0, (float)(mazeSize - 1) / 2 * nodeWidth);
 
