@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    public float sprintSpeed;
     public float jumpSpeed;
     public float gravity;
     private Transform cam;
@@ -58,7 +59,16 @@ public class PlayerController : MonoBehaviour
             // movement
             moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
+
+            // multiply speed
+            if (Input.GetButton("Sprint"))
+            {
+                moveDirection *= sprintSpeed;
+            }
+            else
+            {
+                moveDirection *= speed;
+            }
 
             // jump
             if (Input.GetButton("Jump"))
