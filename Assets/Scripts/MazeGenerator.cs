@@ -20,6 +20,7 @@ public class MazeGenerator : MonoBehaviour
         floor.transform.parent = transform;
         floor.transform.position = transform.position;
         floor.transform.localScale = new Vector3(mazeSize, 1, mazeSize);
+        floor.transform.rotation = transform.rotation;
 
         // this is to center the maze on the parent's position
         Vector3 offset = new Vector3((float)(mazeSize - 1) / 2 * nodeWidth, 0, (float)(mazeSize - 1) / 2 * nodeWidth);
@@ -32,8 +33,9 @@ public class MazeGenerator : MonoBehaviour
             {
                 nodes[x, y] = Instantiate(nodePrefab).GetComponent<Node>();
                 nodes[x, y].transform.parent = transform;
-                nodes[x, y].transform.position = new Vector3(transform.position.x - offset.x + x * nodeWidth,
+                nodes[x, y].transform.localPosition = new Vector3(transform.position.x - offset.x + x * nodeWidth,
                     transform.position.y + 0, transform.position.z - offset.z + y * nodeWidth);
+                nodes[x, y].transform.rotation = transform.rotation;
             }
         }
 
