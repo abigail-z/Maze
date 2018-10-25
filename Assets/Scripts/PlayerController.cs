@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection;
     private float rotX;
     private float rotY;
+    private bool noclip;
+    private int playerMask;
+    private int wallMask;
 
     // Use this for initialization
     void Start ()
@@ -19,11 +22,20 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
         cam = transform.Find("Camera");
-	}
+
+        playerMask = LayerMask.NameToLayer("Player");
+        wallMask = LayerMask.NameToLayer("Wall");
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if (Input.GetKeyDown("g"))
+        {
+            noclip = !noclip;
+            Physics.IgnoreLayerCollision(playerMask, wallMask, noclip);
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
