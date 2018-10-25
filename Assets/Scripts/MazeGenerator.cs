@@ -16,7 +16,7 @@ public class MazeGenerator : MonoBehaviour
         Vector3 offset = new Vector3((float)(mazeSize - 1) / 2 * nodeWidth, 0, (float)(mazeSize - 1) / 2 * nodeWidth);
 
         // instantiate nodes
-        nodes = new Node[mazeSize,mazeSize];
+        nodes = new Node[mazeSize, mazeSize];
         for (int x = 0; x < mazeSize; x++)
         {
             for (int y = 0; y < mazeSize; y++)
