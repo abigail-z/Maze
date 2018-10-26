@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool noclip;
     private int playerMask;
     private int wallMask;
+    private Vector3 startPos;
 
     // Use this for initialization
     void Start ()
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
         playerMask = LayerMask.NameToLayer("Player");
         wallMask = LayerMask.NameToLayer("Wall");
+
+        startPos = transform.localPosition;
     }
 	
 	// Update is called once per frame
@@ -37,6 +40,12 @@ public class PlayerController : MonoBehaviour
         {
             noclip = !noclip;
             Physics.IgnoreLayerCollision(playerMask, wallMask, noclip);
+        }
+
+        if (Input.GetButtonDown("Home"))
+        {
+            transform.localPosition = startPos;
+            rotX = rotY = 0;
         }
 
         if (Input.GetMouseButtonDown(0))
