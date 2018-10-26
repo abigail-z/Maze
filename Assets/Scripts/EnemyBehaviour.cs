@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
         controller = GetComponent<CharacterController>();
 	}
 	
-	// Update is called once per frame
+    // Update is called once per frame
 	void Update ()
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;

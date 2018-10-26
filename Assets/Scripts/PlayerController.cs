@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         if (controller.isGrounded)
         {
             // movement
-            moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+            moveDirection = Vector3.ClampMagnitude(new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")), 1);
             moveDirection = transform.TransformDirection(moveDirection);
 
             // multiply speed
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Apply gravity
-        moveDirection.y = moveDirection.y + (gravity * Time.deltaTime);
+        moveDirection.y += (gravity * Time.deltaTime);
 
         // Move the controller
         controller.Move(moveDirection * Time.deltaTime);
