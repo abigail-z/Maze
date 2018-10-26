@@ -123,23 +123,23 @@ public class MazeGenerator : MonoBehaviour
             {
                 case Direction.Left:
                     A = N.Left;
-                    N.DestroyLeft();
-                    A.DestroyRight();
+                    N.DestroyLeftWall();
+                    A.DestroyRightWall();
                     break;
                 case Direction.Right:
                     A = N.Right;
-                    N.DestroyRight();
-                    A.DestroyLeft();
+                    N.DestroyRightWall();
+                    A.DestroyLeftWall();
                     break;
                 case Direction.Up:
                     A = N.Up;
-                    N.DestroyTop();
-                    A.DestroyBottom();
+                    N.DestroyTopWall();
+                    A.DestroyBottomWall();
                     break;
                 case Direction.Down:
                     A = N.Down;
-                    N.DestroyBottom();
-                    A.DestroyTop();
+                    N.DestroyBottomWall();
+                    A.DestroyTopWall();
                     break;
             }
 

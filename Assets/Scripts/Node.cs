@@ -23,7 +23,7 @@ public class Node : MonoBehaviour
         bottomWall = transform.Find("Bottom Wall").gameObject;
     }
 
-    public void DestroyLeft ()
+    public void DestroyLeftWall ()
     {
         if (leftWall != null)
         {
@@ -32,7 +32,7 @@ public class Node : MonoBehaviour
         }
     }
 
-    public void DestroyRight ()
+    public void DestroyRightWall ()
     {
         if (rightWall != null)
         {
@@ -41,7 +41,7 @@ public class Node : MonoBehaviour
         }
     }
 
-    public void DestroyTop ()
+    public void DestroyTopWall ()
     {
         if (topWall != null)
         {
@@ -50,7 +50,7 @@ public class Node : MonoBehaviour
         }
     }
 
-    public void DestroyBottom ()
+    public void DestroyBottomWall ()
     {
         if (bottomWall != null)
         {
