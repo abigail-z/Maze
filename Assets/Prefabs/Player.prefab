@@ -139,6 +139,8 @@ MonoBehaviour:
   sprintSpeed: 16
   jumpSpeed: 10
   gravity: -30
+  mouseSensitivity: 1
+  controllerSensitivity: 2
 --- !u!124 &124571256929589784
 Behaviour:
   m_ObjectHideFlags: 1

@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float sprintSpeed;
     public float jumpSpeed;
     public float gravity;
+    public float mouseSensitivity;
+    public float controllerSensitivity;
     private Transform cam;
     private CharacterController controller;
     private Vector3 moveDirection;
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown("g"))
+        if (Input.GetButtonDown("Noclip"))
         {
             noclip = !noclip;
             Physics.IgnoreLayerCollision(playerMask, wallMask, noclip);
@@ -42,17 +44,25 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
         }
 
+        // controller aim
+        rotX += Input.GetAxis("Controller X") * Time.deltaTime * 100 * controllerSensitivity;
+        rotY += Input.GetAxis("Controller Y") * Time.deltaTime * 100 * controllerSensitivity;
+
         // mouse aim
         if (Cursor.lockState == CursorLockMode.Locked)
         {
-            rotX += Input.GetAxis("Mouse X");
-            rotX %= 360;
-            transform.localRotation = Quaternion.AngleAxis(rotX, Vector3.up);
+            rotX += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
 
-            rotY += Input.GetAxis("Mouse Y");
-            rotY = Mathf.Clamp(rotY, -90, 90);
-            cam.localRotation = Quaternion.AngleAxis(rotY, Vector3.left);
+            rotY -= Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
         }
+
+        // keep rotations within bounds
+        rotX %= 360;
+        rotY = Mathf.Clamp(rotY, -90, 90);
+
+        // apply rotations
+        transform.localRotation = Quaternion.AngleAxis(rotX, Vector3.up);
+        cam.localRotation = Quaternion.AngleAxis(rotY, Vector3.right);
 
         if (controller.isGrounded)
         {
