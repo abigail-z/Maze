@@ -152,59 +152,6 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1241453428}
-    - target: {fileID: 4840046236899686, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 195901667391914622, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d,
-        type: 2}
-      propertyPath: m_Acceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 195901667391914622, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d,
-        type: 2}
-      propertyPath: m_AngularSpeed
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840046236899686, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840046236899686, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4840046236899686, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292966130881886, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292966130881886, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292966130881886, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 195901667391914622, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d,
-        type: 2}
-      propertyPath: m_Speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 195901667391914622, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d,
-        type: 2}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 195901667391914622, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d, type: 2}
   m_IsPrefabParent: 0

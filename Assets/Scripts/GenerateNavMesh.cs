@@ -17,5 +17,11 @@ public class GenerateNavMesh : MonoBehaviour
     {
         yield return null;
         surface.BuildNavMesh();
+
+        EnemyBehaviour[] enemies = FindObjectsOfType<EnemyBehaviour>();
+        foreach (EnemyBehaviour enemy in enemies)
+        {
+            enemy.StartPathing();
+        }
     }
 }

@@ -15,17 +15,22 @@ public class EnemyBehaviour : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = transform.Find("dude").GetComponent<Animator>();
         agent.speed = transform.localScale.x;
-        anim.Play("Walk", -1, 0.0f);
-        StartCoroutine(EnableAgent());
-	}
+    }
 
     IEnumerator EnableAgent ()
     {
+        agent.enabled = true;
+        anim.Play("Walk", -1, 0.0f);
         while (true)
         {
             agent.destination = player.transform.position;
             anim.speed = agent.velocity.magnitude / agent.speed;
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    public void StartPathing ()
+    {
+        StartCoroutine(EnableAgent());
     }
 }

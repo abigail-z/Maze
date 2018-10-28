@@ -12,7 +12,7 @@ public class MazeGenerator : MonoBehaviour
 
     private Node[,] nodes;
 
-    void Start ()
+    void Awake ()
     {
         // create a floor to fit the maze
         GameObject floor = transform.Find("Floor").gameObject;
