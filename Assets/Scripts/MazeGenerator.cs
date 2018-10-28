@@ -6,7 +6,6 @@ public class MazeGenerator : MonoBehaviour
 {
     public GameObject player;
     public GameObject nodePrefab;
-    public GameObject floorPrefab;
     public float nodeWidth;
     public int mazeSize;
     public float playerSpawnHeight;
@@ -16,7 +15,7 @@ public class MazeGenerator : MonoBehaviour
     void Start ()
     {
         // create a floor to fit the maze
-        GameObject floor = Instantiate(floorPrefab);
+        GameObject floor = transform.Find("Floor").gameObject;
         floor.transform.parent = transform;
         floor.transform.position = transform.position;
         floor.transform.localScale = new Vector3(mazeSize, 1, mazeSize);

@@ -1,23 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
     public GameObject player;
-    public float speed;
-    private CharacterController controller;
+    private NavMeshAgent agent;
 
 	// Use this for initialization
 	void Start ()
     {
-        controller = GetComponent<CharacterController>();
+        agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(EnableAgent());
 	}
-	
-    // Update is called once per frame
-	void Update ()
+
+    IEnumerator EnableAgent ()
     {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        controller.SimpleMove(direction * speed);
-	}
+        yield return null;
+        agent.enabled = true;
+        while (true)
+        {
+            agent.destination = player.transform.position;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 }
