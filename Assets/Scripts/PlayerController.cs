@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public Text winText;
     public float speed;
     public float sprintSpeed;
     public float jumpSpeed;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
         wallMask = LayerMask.NameToLayer("Wall");
 
         startPos = transform.localPosition;
+        winText.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -101,5 +104,13 @@ public class PlayerController : MonoBehaviour
 
         // Move the controller
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Win"))
+        {
+            winText.enabled = true;
+        }
     }
 }

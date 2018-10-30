@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   enemy: {fileID: 0}
+  finish: {fileID: 0}
   nodePrefab: {fileID: 1910067375352040, guid: bf4c15b63f4947b4f91de3635108cff9, type: 2}
   nodeWidth: 10
   mazeSize: 10
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 1
+  m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
