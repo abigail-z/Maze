@@ -1,6 +1,7 @@
 # Maze
 ---
-Created by Nathaniel Zeeman - A00999093
+Created by Nathaniel Zeeman
+A00999093
 
 ##### Controls
 Move - WASD, Left Stick
