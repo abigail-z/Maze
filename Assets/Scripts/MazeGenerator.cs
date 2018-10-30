@@ -5,6 +5,7 @@ using UnityEngine;
 public class MazeGenerator : MonoBehaviour
 {
     public GameObject player;
+    public GameObject enemy;
     public GameObject nodePrefab;
     public float nodeWidth;
     public int mazeSize;
@@ -74,6 +75,9 @@ public class MazeGenerator : MonoBehaviour
 
         // place the player in the maze
         player.transform.position = nodes[0, 0].transform.position + Vector3.up * playerSpawnHeight;
+
+        // also place the bad guy in the maze
+        enemy.transform.position = nodes[mazeSize - 1, mazeSize - 1].transform.position;
     }
 
     // http://www.algosome.com/articles/maze-generation-depth-first.html
