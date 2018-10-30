@@ -22,6 +22,9 @@ public class MazeGenerator : MonoBehaviour
         floor.transform.localScale = new Vector3(mazeSize, 1, mazeSize);
         floor.transform.rotation = transform.rotation;
 
+        // change the tiling of the floor texture
+        floor.GetComponent<Renderer>().material.mainTextureScale = new Vector2(mazeSize, mazeSize);
+
         // this is to center the maze on the parent's position
         Vector3 offset = new Vector3((float)(mazeSize - 1) / 2 * nodeWidth, 0, (float)(mazeSize - 1) / 2 * nodeWidth);
 
