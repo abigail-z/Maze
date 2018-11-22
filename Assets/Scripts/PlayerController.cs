@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float gravity;
     public float mouseSensitivity;
     public float controllerSensitivity;
-    public GameObject ballPrefab;
+    public ObjectPooler ballPool;
     private Transform cam;
     private CharacterController controller;
     private Vector3 moveDirection;
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && Cursor.lockState == CursorLockMode.Locked)
         {
-            BallBehaviour ball = Instantiate(ballPrefab).GetComponent<BallBehaviour>();
+            BallBehaviour ball = ObjectPooler.Instance.Pop("Ball").GetComponent<BallBehaviour>();
             ball.Throw(cam.transform.position, cam.transform.forward, controller.velocity);
         }
     }

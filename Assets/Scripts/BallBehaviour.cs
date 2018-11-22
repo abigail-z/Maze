@@ -2,25 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallBehaviour : MonoBehaviour
+public class BallBehaviour : Poolable
 {
     public float speed;
     public float lifetime;
-    public AudioSource sound;
     private Rigidbody rb;
+    private AudioSource sound;
 
 	// Use this for initialization
 	void Awake ()
     {
         rb = GetComponent<Rigidbody>();
         sound = GetComponent<AudioSource>();
-        StartCoroutine(DespawnTimer());
 	}
-	
-	IEnumerator DespawnTimer ()
+
+    void OnEnable()
+    {
+        rb.velocity = Vector3.zero;
+        StartCoroutine(DespawnTimer());
+    }
+
+    IEnumerator DespawnTimer ()
     {
         yield return new WaitForSeconds(lifetime);
-        Destroy(gameObject);
+        pool.Push("Ball", this);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -28,7 +33,7 @@ public class BallBehaviour : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             GameManager.Instance.IncreaseScore();
-            Destroy(gameObject);
+            pool.Push("Ball", this);
         }
 
         sound.Play();
