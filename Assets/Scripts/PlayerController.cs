@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float gravity;
     public float mouseSensitivity;
     public float controllerSensitivity;
+    public GameObject ballPrefab;
     private Transform cam;
     private CharacterController controller;
     private Vector3 moveDirection;
@@ -51,9 +52,9 @@ public class PlayerController : MonoBehaviour
             rotX = rotY = 0;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Cursor.lockState != CursorLockMode.Locked)
         {
-            Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         // controller aim
@@ -106,11 +107,20 @@ public class PlayerController : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
     }
 
-    void OnTriggerEnter(Collider other)
+    void LateUpdate ()
+    {
+        if (Input.GetButtonDown("Fire1") && Cursor.lockState == CursorLockMode.Locked)
+        {
+            BallBehaviour ball = Instantiate(ballPrefab).GetComponent<BallBehaviour>();
+            ball.Throw(cam.transform.position, cam.transform.forward, controller.velocity);
+        }
+    }
+
+    void OnTriggerEnter (Collider other)
     {
         if (other.CompareTag("Win"))
         {
-            winText.enabled = true;
+            GameManager.Instance.Win();
         }
     }
 }

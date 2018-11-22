@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 143425559121783982}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,12 +135,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659d048e5b21e314babe7d68d0e5542b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winText: {fileID: 0}
   speed: 5
   sprintSpeed: 10
   jumpSpeed: 10
   gravity: -30
   mouseSensitivity: 1
   controllerSensitivity: 2
+  ballPrefab: {fileID: 1675620716403376, guid: f86e9aafb97ae694e9750ac6fb31c63d, type: 2}
 --- !u!124 &124571256929589784
 Behaviour:
   m_ObjectHideFlags: 1
