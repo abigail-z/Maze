@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
+    public Transform player;
+    public Transform enemy;
+    public float minVolumeDistance;
     private AudioSource music;
 
 	// Use this for initialization
@@ -15,6 +18,9 @@ public class MusicManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        float distance = (player.position - enemy.position).magnitude;
+        music.volume = 1 - distance / minVolumeDistance;
+
 		if (Input.GetButtonDown("Music"))
         {
             if (music.isPlaying)

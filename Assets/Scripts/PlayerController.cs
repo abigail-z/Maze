@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public Text winText;
     public float speed;
     public float sprintSpeed;
     public float jumpSpeed;
@@ -24,13 +23,17 @@ public class PlayerController : MonoBehaviour
     private int playerMask;
     private int wallMask;
     private Vector3 startPos;
-    private AudioSource sound;
+    private AudioSource stepSource;
+    private AudioSource oofSource;
     private bool stepReady;
 
     // Use this for initialization
     void Start ()
     {
-        sound = GetComponent<AudioSource>();
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        stepSource = audioSources[0];
+        oofSource = audioSources[1];
+
         controller = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
         cam = transform.Find("Camera");
@@ -40,7 +43,6 @@ public class PlayerController : MonoBehaviour
         wallMask = LayerMask.NameToLayer("Wall");
 
         startPos = transform.localPosition;
-        winText.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -110,8 +112,8 @@ public class PlayerController : MonoBehaviour
             Vector2 flatVelocity = new Vector2(controller.velocity.x, controller.velocity.z);
             if (flatVelocity.magnitude > 0 && stepReady)
             {
-                sound.clip = steps[Random.Range(0, steps.Length)];
-                sound.Play();
+                stepSource.clip = steps[Random.Range(0, steps.Length)];
+                stepSource.Play();
                 float p = sprinting ? stepPeriod : sprintSpeed / speed * stepPeriod;
                 StartCoroutine(StepWait(p));
             }
@@ -145,6 +147,14 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Win"))
         {
             GameManager.Instance.Win();
+        }
+    }
+
+    void OnControllerColliderHit (ControllerColliderHit hit)
+    {
+        if (hit.collider.CompareTag("Wall") && !oofSource.isPlaying)
+        {
+            oofSource.Play();
         }
     }
 }

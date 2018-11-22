@@ -149,7 +149,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &306331860
 Prefab:
@@ -226,7 +226,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &325658391
 AudioSource:
@@ -238,7 +238,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ace57a904e3a32b41ae8b9b489010311, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -319,6 +319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f95f8c641b9d0c4ba1040f6d5b8a6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1241453431}
+  enemy: {fileID: 1711072149}
+  minVolumeDistance: 50
 --- !u!1001 &407711576
 Prefab:
   m_ObjectHideFlags: 0
@@ -494,11 +497,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114821054472384618, guid: ec39a8958a142674eae6eb1600967518,
+    - target: {fileID: 82749673355385194, guid: ec39a8958a142674eae6eb1600967518,
         type: 2}
-      propertyPath: winText
+      propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 598677938}
+      objectReference: {fileID: 8300000, guid: f3d1a9660840e3c409ef5a8e460791ab, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec39a8958a142674eae6eb1600967518, type: 2}
   m_IsPrefabParent: 0
@@ -679,6 +682,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1074543654954098, guid: ec39a8958a142674eae6eb1600967518,
     type: 2}
   m_PrefabInternal: {fileID: 963740883}
+--- !u!4 &1241453431 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4506444653047420, guid: ec39a8958a142674eae6eb1600967518,
+    type: 2}
+  m_PrefabInternal: {fileID: 963740883}
 --- !u!1001 &1581830948
 Prefab:
   m_ObjectHideFlags: 0
@@ -764,6 +772,11 @@ Transform:
 --- !u!1 &1711072146 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1712003831847684, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d,
+    type: 2}
+  m_PrefabInternal: {fileID: 306331860}
+--- !u!4 &1711072149 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4292966130881886, guid: 7ffe40f05dd4b4e46b0526eb90cdcd8d,
     type: 2}
   m_PrefabInternal: {fileID: 306331860}
 --- !u!1 &1754012729
