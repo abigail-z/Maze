@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4506444653047420}
   - component: {fileID: 114821054472384618}
   - component: {fileID: 143425559121783982}
+  - component: {fileID: 82446124924118872}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -117,6 +118,86 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1639363952779978}
   m_Enabled: 1
+--- !u!82 &82446124924118872
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074543654954098}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!92 &92211495595154516
 Behaviour:
   m_ObjectHideFlags: 1
@@ -142,7 +223,16 @@ MonoBehaviour:
   gravity: -30
   mouseSensitivity: 1
   controllerSensitivity: 2
-  ballPrefab: {fileID: 1675620716403376, guid: f86e9aafb97ae694e9750ac6fb31c63d, type: 2}
+  steps:
+  - {fileID: 8300000, guid: fbe5efbcc2349574c9dc2acf88f199c9, type: 3}
+  - {fileID: 8300000, guid: f41f9339fdeab694d8f37397bfbf3a76, type: 3}
+  - {fileID: 8300000, guid: f339e45954b2ce44ca2e0ed0317cf217, type: 3}
+  - {fileID: 8300000, guid: f9a0d5b4a896a16408895adc148ab720, type: 3}
+  - {fileID: 8300000, guid: d86c01a53513a63468e4437775d2a3fe, type: 3}
+  - {fileID: 8300000, guid: 3ad80133fd5a1bd48a8b1f49fe5ee85f, type: 3}
+  - {fileID: 8300000, guid: 61f9d76b6eaca044e9792ba8641cd1c6, type: 3}
+  - {fileID: 8300000, guid: 76ecf23c66ac7f84a8d52aaf8516a146, type: 3}
+  stepPeriod: 0.4
 --- !u!124 &124571256929589784
 Behaviour:
   m_ObjectHideFlags: 1

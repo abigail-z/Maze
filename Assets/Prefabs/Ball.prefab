@@ -130,25 +130,37 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 1
+      value: 1.0035073
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      time: 0.08033898
+      value: 0.44424248
+      inSlope: -2.5505335
+      outSlope: -2.5505335
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.44843993
+      value: 0.048599124
+      inSlope: -0.22571117
+      outSlope: -0.22571117
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.890831
+      value: 0.006439209
+      inSlope: -0.049935576
+      outSlope: -0.049935576
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 1
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -193,7 +205,6 @@ MonoBehaviour:
   pool: {fileID: 0}
   speed: 15
   lifetime: 5
-  sound: {fileID: 0}
 --- !u!135 &135981175056337972
 SphereCollider:
   m_ObjectHideFlags: 1

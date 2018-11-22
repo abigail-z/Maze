@@ -30,13 +30,13 @@ public class BallBehaviour : Poolable
 
     void OnCollisionEnter(Collision collision)
     {
+        sound.Play();
+
         if (collision.collider.CompareTag("Enemy"))
         {
             GameManager.Instance.IncreaseScore();
             pool.Push("Ball", this);
         }
-
-        sound.Play();
     }
 
     public void Throw (Vector3 startPos, Vector3 direction, Vector3 inheritVelocity)

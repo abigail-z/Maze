@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     public float gravity;
     public float mouseSensitivity;
     public float controllerSensitivity;
-    public ObjectPooler ballPool;
+    public AudioClip[] steps;
+    public float stepPeriod;
+
     private Transform cam;
     private CharacterController controller;
     private Vector3 moveDirection;
@@ -22,13 +24,17 @@ public class PlayerController : MonoBehaviour
     private int playerMask;
     private int wallMask;
     private Vector3 startPos;
+    private AudioSource sound;
+    private bool stepReady;
 
     // Use this for initialization
     void Start ()
     {
+        sound = GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
         cam = transform.Find("Camera");
+        stepReady = true;
 
         playerMask = LayerMask.NameToLayer("Player");
         wallMask = LayerMask.NameToLayer("Wall");
@@ -84,7 +90,8 @@ public class PlayerController : MonoBehaviour
             moveDirection = transform.TransformDirection(moveDirection);
 
             // multiply speed
-            if (Input.GetButton("Sprint"))
+            bool sprinting = Input.GetButton("Sprint");
+            if (sprinting)
             {
                 moveDirection *= sprintSpeed;
             }
@@ -98,6 +105,16 @@ public class PlayerController : MonoBehaviour
             {
                 moveDirection.y = jumpSpeed;
             }
+
+            // do step sounds
+            Vector2 flatVelocity = new Vector2(controller.velocity.x, controller.velocity.z);
+            if (flatVelocity.magnitude > 0 && stepReady)
+            {
+                sound.clip = steps[Random.Range(0, steps.Length)];
+                sound.Play();
+                float p = sprinting ? stepPeriod : sprintSpeed / speed * stepPeriod;
+                StartCoroutine(StepWait(p));
+            }
         }
 
         // Apply gravity
@@ -105,6 +122,13 @@ public class PlayerController : MonoBehaviour
 
         // Move the controller
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    IEnumerator StepWait (float seconds)
+    {
+        stepReady = false;
+        yield return new WaitForSeconds(seconds);
+        stepReady = true;
     }
 
     void LateUpdate ()
