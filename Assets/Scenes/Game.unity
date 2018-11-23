@@ -237,8 +237,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ace57a904e3a32b41ae8b9b489010311, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -322,6 +322,9 @@ MonoBehaviour:
   player: {fileID: 1241453431}
   enemy: {fileID: 1711072149}
   minVolumeDistance: 50
+  minVolume: 0.25
+  daySong: {fileID: 8300000, guid: 619c048dfbac1ee479f1be5a792a8d8c, type: 3}
+  nightSong: {fileID: 8300000, guid: ace57a904e3a32b41ae8b9b489010311, type: 3}
 --- !u!1001 &407711576
 Prefab:
   m_ObjectHideFlags: 0
@@ -453,6 +456,51 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 598677936}
+--- !u!1 &650865120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 650865122}
+  - component: {fileID: 650865121}
+  m_Layer: 0
+  m_Name: Shader Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &650865121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650865120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e13a5b2da0d189469b8d0d535d90f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaders:
+  - {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 4800000, guid: 5469b6ec480e94e46aa979f326e256e0, type: 3}
+  - {fileID: 4800000, guid: dc73a7da8b747034cbcd5eb04b8042df, type: 3}
+  - {fileID: 4800000, guid: a0c14bb35eae91a4cb289e94eda7af98, type: 3}
+--- !u!4 &650865122
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650865120}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &859428551 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1739764716581944, guid: 35dca4f08e2334a4baccffb1164559b8,
@@ -497,11 +545,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 82749673355385194, guid: ec39a8958a142674eae6eb1600967518,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f3d1a9660840e3c409ef5a8e460791ab, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec39a8958a142674eae6eb1600967518, type: 2}
   m_IsPrefabParent: 0

@@ -49,25 +49,29 @@ public class ObjectPooler : MonoBehaviour
     public Poolable Pop (string poolName)
     {
         ObjectPool pool;
+        Poolable obj = null;
         if (dict.TryGetValue(poolName, out pool))
         {
-            Poolable obj;
             if (pool.stack.Count > 0)
             {
                 obj = pool.stack.Pop();
                 obj.gameObject.SetActive(true);
-                return obj;
             }
             else
             {
                 obj = Instantiate(pool.prefab);
                 obj.pool = this;
                 obj.transform.parent = transform;
-                return obj;
+            }
+
+            Renderer r = obj.GetComponent<Renderer>();
+            if (r != null)
+            {
+                r.material.shader = ShaderManager.Instance.CurrentShader();
             }
         }
 
-        return null;
+        return obj;
     }
 }
 
