@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour
@@ -10,6 +11,7 @@ public class GameManagerScript : MonoBehaviour
     public Text winText;
     public uint winningScore;
     public float winWaitTime;
+    public string otherScene;
     private uint leftScore = 0;
     private uint rightScore = 0;
 
@@ -48,13 +50,6 @@ public class GameManagerScript : MonoBehaviour
         ball.gameObject.SetActive(false);
         yield return new WaitForSeconds(winWaitTime);
 
-        leftScore = 0;
-        rightScore = 0;
-        leftScoreText.text = leftScore.ToString();
-        rightScoreText.text = rightScore.ToString();
-
-        winText.enabled = false;
-        ball.gameObject.SetActive(true);
-        ball.StartBall();
+        PongSwitchManager.Instance.DisablePong();
     }
 }

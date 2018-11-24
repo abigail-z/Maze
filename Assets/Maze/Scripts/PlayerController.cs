@@ -157,5 +157,10 @@ public class PlayerController : MonoBehaviour
         {
             oofSource.Play();
         }
+
+        if (hit.collider.CompareTag("Portal"))
+        {
+            PongSwitchManager.Instance.EnablePong();
+        }
     }
 }

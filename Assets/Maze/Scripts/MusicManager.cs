@@ -19,7 +19,7 @@ public class MusicManager : MonoBehaviour
         music = GetComponent<AudioSource>();
         music.clip = daySong;
         music.Play();
-        ShaderManager.Instance.StateChange += FogVolume;
+        ShaderManager.Instance.StateChange += OnShaderChange;
 	}
 	
 	// Update is called once per frame
@@ -46,7 +46,7 @@ public class MusicManager : MonoBehaviour
         }
 	}
 
-    void FogVolume ()
+    void OnShaderChange ()
     {
         string name = ShaderManager.Instance.CurrentShader.name;
         if (name == "Custom/Fog")
