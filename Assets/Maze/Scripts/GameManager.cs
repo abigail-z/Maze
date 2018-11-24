@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     private static GameManager instance;
 
-    public int Score { get { return score; } }
-    private int score;
+    public uint Score { get { return score; } set { score = value; } }
+    private uint score;
 
     public bool WinState { get { return winState; } }
     private bool winState;
