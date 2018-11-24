@@ -20,7 +20,10 @@ public class UpdatableShader : MonoBehaviour
 
         foreach (Renderer r in renderers)
         {
-            r.material.shader = ShaderManager.Instance.CurrentShader;
+            foreach (Material m in r.materials)
+            {
+                m.shader = ShaderManager.Instance.CurrentShader;
+            }
         }
     }
 
