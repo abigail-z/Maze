@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 82721510162628160}
   - component: {fileID: 114946378771706110}
   m_Layer: 10
-  m_Name: Ball
+  m_Name: Throwable Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b763b28314a5ee9449f0095104c66ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool: {fileID: 0}
   speed: 15
   lifetime: 5
 --- !u!114 &114946378771706110
