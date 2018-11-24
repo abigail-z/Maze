@@ -5,7 +5,7 @@
 		_Color("Color", Color) = (1,1,1,1)
 		_MainTex("Texture", 2D) = "white" {}
 		_ShadowColor("ShadowColor", Color) = (0,0,0,1)
-		_Radius("Radius", Range(0.001, 500)) = 25
+		_LightRadius("Radius", Range(0.001, 500)) = 200
 	}
 
 	SubShader
@@ -35,7 +35,7 @@
 			float4 _MainTex_ST;
 			fixed4 _Color;
 			float4 _ShadowColor;
-			float _Radius;
+			float _LightRadius;
 
 			v2f vert(appdata v)
 			{
@@ -48,9 +48,9 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				float dist = distance(i.worldPos, _WorldSpaceCameraPos);
-				fixed4 col = tex2D(_MainTex, i.uv);
-				col = lerp(col * _Color, _ShadowColor, dist / _Radius);
+				fixed4 col = tex2D(_MainTex, i.uv) * _Color;
+				float dist = distance(i.pos, _ScreenParams / 2);
+				col = lerp(col, _ShadowColor, dist / _LightRadius);
 
 				return col;
 			}

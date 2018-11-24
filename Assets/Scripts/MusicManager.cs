@@ -48,7 +48,7 @@ public class MusicManager : MonoBehaviour
 
     void FogVolume ()
     {
-        string name = ShaderManager.Instance.CurrentShader().name;
+        string name = ShaderManager.Instance.CurrentShader.name;
         if (name == "Custom/Fog")
         {
             fog = true;

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float controllerSensitivity;
     public AudioClip[] steps;
     public float stepPeriod;
+    public GameObject ballPrefab;
 
     private Transform cam;
     private CharacterController controller;
@@ -137,7 +138,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && Cursor.lockState == CursorLockMode.Locked)
         {
-            BallBehaviour ball = ObjectPooler.Instance.Pop("Ball").GetComponent<BallBehaviour>();
+            BallBehaviour ball = Instantiate(ballPrefab).GetComponent<BallBehaviour>();
             ball.Throw(cam.transform.position, cam.transform.forward, controller.velocity);
         }
     }

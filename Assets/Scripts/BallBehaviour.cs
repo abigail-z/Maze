@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallBehaviour : Poolable
+public class BallBehaviour : MonoBehaviour
 {
     public float speed;
     public float lifetime;
@@ -25,7 +25,7 @@ public class BallBehaviour : Poolable
     IEnumerator DespawnTimer ()
     {
         yield return new WaitForSeconds(lifetime);
-        pool.Push("Ball", this);
+        Destroy(gameObject);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -35,7 +35,7 @@ public class BallBehaviour : Poolable
         if (collision.collider.CompareTag("Enemy"))
         {
             GameManager.Instance.IncreaseScore();
-            pool.Push("Ball", this);
+            Destroy(gameObject);
         }
     }
 

@@ -5,7 +5,7 @@
 		_Color("Color", Color) = (1,1,1,1)
 		_MainTex("Texture", 2D) = "white" {}
 		_FogColor("FogColor", Color) = (1,1,1,1)
-		_Radius("Radius", Range(0.001, 500)) = 25
+		_FogRadius("Radius", Range(0.001, 500)) = 25
 	}
 
 	SubShader
@@ -35,7 +35,7 @@
 			float4 _MainTex_ST;
 			fixed4 _Color;
 			float4 _FogColor;
-			float _Radius;
+			float _FogRadius;
 
 			v2f vert(appdata v)
 			{
@@ -50,7 +50,7 @@
 			{
 				float dist = distance(i.worldPos, _WorldSpaceCameraPos);
 				fixed4 col = tex2D(_MainTex, i.uv);
-				col = lerp(col * _Color, _FogColor, dist / _Radius);
+				col = lerp(col * _Color, _FogColor, dist / _FogRadius);
 
 				return col;
 			}

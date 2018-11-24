@@ -63,12 +63,6 @@ public class ObjectPooler : MonoBehaviour
                 obj.pool = this;
                 obj.transform.parent = transform;
             }
-
-            Renderer r = obj.GetComponent<Renderer>();
-            if (r != null)
-            {
-                r.material.shader = ShaderManager.Instance.CurrentShader();
-            }
         }
 
         return obj;

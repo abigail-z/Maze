@@ -53,6 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4067925830404796}
+  - component: {fileID: 114747520668502340}
   m_Layer: 0
   m_Name: Win Tile
   m_TagString: Untagged
@@ -166,3 +167,14 @@ MonoBehaviour:
   rotation: {x: 15, y: 10, z: 5}
   bobFrequency: 1.5
   bobDistance: 0.5
+--- !u!114 &114747520668502340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1739764716581944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7c4f6001a898d43bdf4c56247f0d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

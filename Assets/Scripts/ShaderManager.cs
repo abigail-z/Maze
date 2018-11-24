@@ -13,6 +13,8 @@ public class ShaderManager : MonoBehaviour
     public delegate void StateAction();
     public event StateAction StateChange;
 
+    public Shader CurrentShader { get { return shaders[currentShader]; } }
+
     void Awake ()
     {
         if (instance == null)
@@ -40,13 +42,6 @@ public class ShaderManager : MonoBehaviour
 
     void UpdateAllShaders ()
     {
-        Renderer[] renderers = (Renderer[])FindObjectsOfType(typeof(Renderer));
-        foreach (Renderer r in renderers)
-        {
-
-            r.material.shader = shaders[currentShader];
-        }
-
         if (StateChange != null)
         {
             StateChange();
@@ -55,10 +50,5 @@ public class ShaderManager : MonoBehaviour
 #if UNITY_EDITOR
         Debug.Log(shaders[currentShader].name);
 #endif
-    }
-
-    public Shader CurrentShader ()
-    {
-        return shaders[currentShader];
     }
 }

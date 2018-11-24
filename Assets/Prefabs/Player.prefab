@@ -313,6 +313,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 61f9d76b6eaca044e9792ba8641cd1c6, type: 3}
   - {fileID: 8300000, guid: 76ecf23c66ac7f84a8d52aaf8516a146, type: 3}
   stepPeriod: 0.4
+  ballPrefab: {fileID: 1675620716403376, guid: f86e9aafb97ae694e9750ac6fb31c63d, type: 2}
 --- !u!124 &124571256929589784
 Behaviour:
   m_ObjectHideFlags: 1
