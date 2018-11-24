@@ -10,10 +10,14 @@ public class Node : MonoBehaviour
     public Node Down { get; set; }
     public bool Visited { get; set; }
 
-    private GameObject leftWall;
-    private GameObject rightWall;
-    private GameObject topWall;
-    private GameObject bottomWall;
+    [HideInInspector]
+    public GameObject leftWall;
+    [HideInInspector]
+    public GameObject rightWall;
+    [HideInInspector]
+    public GameObject topWall;
+    [HideInInspector]
+    public GameObject bottomWall;
 
     void Awake ()
     {

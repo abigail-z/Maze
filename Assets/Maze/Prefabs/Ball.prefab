@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 82721510162628160}
   - component: {fileID: 114946378771706110}
   m_Layer: 10
-  m_Name: Throwable Ball
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

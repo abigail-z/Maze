@@ -11,6 +11,7 @@ public class MazeGenerator : MonoBehaviour
     public float nodeWidth;
     public int mazeSize;
     public float playerSpawnHeight;
+    public Material portalMaterial;
 
     private Node[,] nodes;
 
@@ -79,6 +80,36 @@ public class MazeGenerator : MonoBehaviour
 
         // place the player in the maze
         player.transform.position = nodes[0, 0].transform.position + Vector3.up * playerSpawnHeight;
+
+        // place a portal in the maze
+        GameObject portal = null;
+        while (portal == null)
+        {
+            int x = Random.Range(0, mazeSize);
+            int y = Random.Range(0, mazeSize);
+            int dir = Random.Range(0, 4);
+
+            switch (dir)
+            {
+                case 0:
+                    portal = nodes[x, y].leftWall;
+                    break;
+                case 1:
+                    portal = nodes[x, y].rightWall;
+                    break;
+                case 2:
+                    portal = nodes[x, y].topWall;
+                    break;
+                case 3:
+                    portal = nodes[x, y].bottomWall;
+                    break;
+                default:
+                    portal = null;
+                    break;
+            }
+        }
+        portal.GetComponent<Renderer>().material = portalMaterial;
+        portal.tag = "Portal";
 
         // also place the finish and bad guy in the maze
         finish.transform.position = enemy.transform.position = nodes[mazeSize - 1, mazeSize - 1].transform.position;
