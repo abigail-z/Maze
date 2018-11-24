@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Win
+  - Enemy
+  - Wall
+  - RightCourt
+  - LeftGoal
+  - LeftCourt
+  - LeftPaddle
+  - RightGoal
+  - RightPaddle
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -16,9 +25,9 @@ TagManager:
   - 
   - Wall
   - Player
-  - 
-  - 
-  - 
+  - Ball
+  - Enemy
+  - Oof
   - 
   - 
   - 
