@@ -13,3 +13,4 @@ Start/stop music - T, Square
 Save - [, L1  
 Load - ], R1  
 Throw ball - Left Click, X  
+Cycle shaders - F, Right Stick Click  
