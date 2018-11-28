@@ -10,6 +10,7 @@ public class HUDBehaviour : MonoBehaviour
     private Text win;
     private Text score;
     private Text saveStatus;
+    private Coroutine cr;
 
 	// Use this for initialization
 	void Awake ()
@@ -26,7 +27,7 @@ public class HUDBehaviour : MonoBehaviour
         UpdateHUD();
     }
 
-    void UpdateHUD ()
+    public void UpdateHUD ()
     {
         win.enabled = GameManager.Instance.WinState;
         score.text = GameManager.Instance.Score.ToString();
@@ -34,7 +35,11 @@ public class HUDBehaviour : MonoBehaviour
 
     public void UpdateSaveStatus (string message)
     {
-        StartCoroutine(SaveDisplay(message));
+        if (cr != null)
+        {
+            StopCoroutine(cr);
+        }
+        cr = StartCoroutine(SaveDisplay(message));
     }
 
     IEnumerator SaveDisplay (string message)
@@ -43,5 +48,6 @@ public class HUDBehaviour : MonoBehaviour
         saveStatus.text = message;
         yield return new WaitForSeconds(saveStatusScreentime);
         saveStatus.enabled = false;
+        cr = null;
     }
 }

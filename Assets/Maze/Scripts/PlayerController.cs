@@ -136,9 +136,10 @@ public class PlayerController : MonoBehaviour
 
     void LateUpdate ()
     {
-        if (Input.GetButtonDown("Fire1") && Cursor.lockState == CursorLockMode.Locked)
+        if (Input.GetButtonDown("Fire1"))
         {
             BallBehaviour ball = Instantiate(ballPrefab).GetComponent<BallBehaviour>();
+            ball.GetComponent<Renderer>().material.shader = ShaderManager.Instance.CurrentShader;
             ball.Throw(cam.transform.position, cam.transform.forward, controller.velocity);
         }
     }

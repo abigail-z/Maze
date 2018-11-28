@@ -7,8 +7,7 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    public static SaveManager Instance { get { return instance; } }
-    private static SaveManager instance;
+    public static SaveManager Instance { get; private set; }
 
     public string fileName;
     public Transform player;
@@ -17,12 +16,10 @@ public class SaveManager : MonoBehaviour
 
 	void Awake ()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
             Destroy(gameObject);
-
-        fileName = Application.persistentDataPath + "/" + fileName + ".dat";
 	}
 
     void Update ()
@@ -43,33 +40,30 @@ public class SaveManager : MonoBehaviour
             enemyPos = enemy.position
         };
 
-        // save and close
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(fileName);
-        bf.Serialize(file, sd);
-        file.Close();
+        string json = JsonUtility.ToJson(sd);
+        PlayerPrefs.SetString(fileName, json);
 
         hud.UpdateSaveStatus("Saved");
     }
 
     public void Load ()
     {
-        if (File.Exists(fileName))
+        string json = PlayerPrefs.GetString(fileName);
+
+        if (json.Length > 0)
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(fileName, FileMode.Open);
-            SaveData sd = (SaveData)bf.Deserialize(file);
-            file.Close();
+            SaveData sd = JsonUtility.FromJson<SaveData>(json);
 
             GameManager.Instance.Score = (uint)sd.score;
             player.position = sd.playerPos;
             enemy.position = sd.enemyPos;
 
             hud.UpdateSaveStatus("Loaded");
+            hud.UpdateHUD();
         }
         else
         {
-            hud.UpdateSaveStatus("No save file to load");
+            hud.UpdateSaveStatus("No file to load");
         }
     }
 

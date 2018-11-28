@@ -18,7 +18,7 @@ public class MusicManager : MonoBehaviour
     {
         music = GetComponent<AudioSource>();
         music.clip = daySong;
-        music.Play();
+        // music.Play();
         ShaderManager.Instance.StateChange += OnShaderChange;
 	}
 	
@@ -60,15 +60,29 @@ public class MusicManager : MonoBehaviour
 
         if (name == "Custom/Night")
         {
-            music.Stop();
-            music.clip = nightSong;
-            music.Play();
+            if (music.isPlaying)
+            {
+                music.Stop();
+                music.clip = nightSong;
+                music.Play();
+            }
+            else
+            {
+                music.clip = nightSong;
+            }
         }
         else if (music.clip == nightSong)
         {
-            music.Stop();
-            music.clip = daySong;
-            music.Play();
+            if (music.isPlaying)
+            {
+                music.Stop();
+                music.clip = daySong;
+                music.Play();
+            }
+            else
+            {
+                music.clip = nightSong;
+            }
         }
     }
 }

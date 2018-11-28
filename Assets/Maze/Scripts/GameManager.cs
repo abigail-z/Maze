@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get { return instance; } }
-    private static GameManager instance;
+    public static GameManager Instance { get; private set; }
 
-    public uint Score { get { return score; } set { score = value; } }
-    private uint score;
+    public uint Score { get; set; }
 
-    public bool WinState { get { return winState; } }
-    private bool winState;
+    public bool WinState { get; private set; }
 
     public delegate void StateAction();
     public event StateAction StateChange;
 
     void Awake ()
     {
-		if (instance == null)
+		if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -30,14 +27,14 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseScore ()
     {
-        score++;
+        Score++;
 
         UpdateSubscribers();
     }
 
     public void Win ()
     {
-        winState = true;
+        WinState = true;
 
         UpdateSubscribers();
     }

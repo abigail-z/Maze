@@ -27,14 +27,14 @@
 			struct v2f
 			{
 				float2 uv : TEXCOORD0;
-				float4 worldPos : TEXCOORD1;
+				float3 worldPos : TEXCOORD1;
 				float4 pos : SV_POSITION;
 			};
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 			fixed4 _Color;
-			float4 _FogColor;
+			fixed4 _FogColor;
 			float _FogRadius;
 
 			v2f vert(appdata v)
@@ -48,11 +48,10 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
+				fixed4 col = tex2D(_MainTex, i.uv) * _Color;
 				float dist = distance(i.worldPos, _WorldSpaceCameraPos);
-				fixed4 col = tex2D(_MainTex, i.uv);
-				col = lerp(col * _Color, _FogColor, dist / _FogRadius);
 
-				return col;
+				return lerp(col, _FogColor, saturate(dist / _FogRadius));
 			}
 				ENDCG
 		}
