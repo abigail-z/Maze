@@ -7,8 +7,7 @@ public class ShaderManager : MonoBehaviour
     public Shader[] shaders;
     private int currentShader;
 
-    public static ShaderManager Instance { get { return instance; } }
-    private static ShaderManager instance;
+    public static ShaderManager Instance { get; private set; }
 
     public delegate void StateAction();
     public event StateAction StateChange;
@@ -17,9 +16,9 @@ public class ShaderManager : MonoBehaviour
 
     void Awake ()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {

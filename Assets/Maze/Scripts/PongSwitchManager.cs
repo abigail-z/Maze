@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 public class PongSwitchManager : MonoBehaviour
 {
 
-    public static PongSwitchManager Instance { get { return instance; } }
-    private static PongSwitchManager instance;
+    public static PongSwitchManager Instance { get; private set; }
 
     private List<GameObject> rootObjects;
 
@@ -16,9 +15,9 @@ public class PongSwitchManager : MonoBehaviour
 
     void Awake ()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {

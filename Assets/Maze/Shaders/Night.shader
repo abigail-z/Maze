@@ -46,10 +46,9 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				fixed4 col = tex2D(_MainTex, i.uv);
-				col = lerp(col * _Color, _Black, _Darkness);
+				fixed4 col = tex2D(_MainTex, i.uv) * _Color;
 
-				return col;
+				return lerp(col, _Black, _Darkness);
 			}
 				ENDCG
 		}

@@ -5,11 +5,11 @@ A00999093
 #### Controls  
 Move - WASD, Left Stick  
 Look - Mouse, Right Stick  
-Jump - Space, X  
+Jump - Space  
 Run - Shift, Left Stick Click  
-Toggle noclip - G, Circle  
-Go to start - Home, Triangle  
-
-#### Features not implemented  
-Daytime/nighttime shaders  
-Fog shader  
+Toggle noclip - G, Triangle  
+Go to start - Home, Circle  
+Start/stop music - T, Square  
+Save - [, L1  
+Load - ], R1  
+Throw ball - Left Click, X  
